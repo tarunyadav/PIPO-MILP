@@ -1,27 +1,28 @@
 import gurobipy
 import sys
 def s_box_ineq():
-    f = open("DDT_all_min_prob.txt","r")
+    f = open("LinearInequalities_Inner.txt","r")
     data= f.readlines()
-    no_of_input = int(data[0].rstrip().split()[1])
+    no_of_input = int(data[0].rstrip().split()[2])
     f.close()
     ineq_list=[]
-    for row in data[4:-1]:
-        row_arr = row.rstrip().split(" ")[0]
+    for row in data[1:]:
         row_list=[0]*(no_of_input+1)
-        const = 0
+        row_arr = row.rstrip().split(" ")
+        row_list=[0]*(no_of_input+1)
         for i in range(0,len(row_arr)):
-                if(row_arr[i]=='0'):
-                    row_list[i]=1
-                elif (row_arr[i]=='1'):
-                    row_list[i]=-1
-                    const = const + 1
- 
-        row_list[23] = const - 1
+                if(row_arr[i]=='+'):
+                    row_list[i]= 1
+                elif (row_arr[i]=='-'):
+                    row_list[i]= -1
+                elif (row_arr[i]=='0'):
+                    row_list[i]= 0
+        row_list[no_of_input] = int(row_arr[no_of_input])
         ineq_list = ineq_list + row_list
     return ineq_list
 
 convpbl = s_box_ineq()
+
 P64 = (0, 1, 2, 3, 4, 5, 6, 7, 15, 8, 9, 10, 11, 12, 13, 14, 
 20, 21, 22, 23, 16, 17, 18, 19, 27, 28, 29, 30, 31, 24, 25, 26,
 38, 39, 32, 33, 34, 35, 36, 37, 45, 46, 47, 40, 41, 42, 43, 44,
