@@ -8,14 +8,13 @@ Created on Mon Jul 27 18:40:37 2020
 
 import sys
 filename = sys.argv[1]
-blocksize= int(sys.argv[3]);
+blocksize= 64;
 f1 = open(filename,"r");
 data = f1.readlines()
 data_copy = [a for a in data];
 for a in data_copy:
     if ("*" in a):
         data.remove(a)
-#print(data)
 f1.close()
 diff_sbox_line = data[2*int(sys.argv[2]) - 2]
 diff_differential_line = data[2*int(sys.argv[2]) - 1]
