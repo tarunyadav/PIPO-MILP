@@ -13,7 +13,7 @@ MILP Based Differential Characteristics Search for Lightweight Block Cipher PIPO
 * _MILP_Outer.py_ is used to minimize number of active S-boxes in PIPO. It uses _LinearInequalities_Outer.txt_ to write linear inequalities of the S-box.
 * There are two arugment for _MILP_Outer.py_. First argument defines number of rounds and second argument define the cutoff bound of active S-box. The second argument is made changable(instead of fix upper/lower bound) because it is obsevered that GUROBI gives quick solution for for some values which are not directly related to the upper/lower bound of active S-box. 
 * The minimum number of active S-boxes for 7 rounds is searched using following command:\
-```MILP_Outer.py 7 22```
+```MILP_Outer.py 7 10```
 * The output (_Outer_Result_7.txt_) is in the following format:\
 ```[[0, 0], [1, 7], [2, 3], [2, 7], [3, 0], [3, 4], [3, 5], [3, 7], [4, 0], [4, 6], [4, 7], [5, 4], [6, 7]]```\
 [a,b] => In the round number a, S-box b is active.
