@@ -34,7 +34,7 @@ ROUND = int(sys.argv[1])
 #act = (1, 2, 3, 5, 7, 10, 13, 16, 18, 20, 22, 24, 26)
 #act = (1, 2, 4, 6, 9, 11, 13, 16, 18, 20,  20, 20, 20, 20)
 act = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-act[ROUND-1] = int(sys.argv[2])  # Try with 22
+act[ROUND-1] = int(sys.argv[2])  # Try with 10
 BanListlen = 0
 #############################
 fix = False           # Make it True if want to fix a difference (need to set fix_diff and fix_pos too)
@@ -142,15 +142,6 @@ def PrintOuter(BanList):
             buf = buf + " + "
         if i == block_size-1:
             buf = buf + " >= 1\n"
-    opOuter.write(buf)
-    buf = ''
-    buf = buf + "a0_0 + a0_1 + a0_2 + a0_3 + a0_4 + a0_5 + a0_6 + a0_7 = 1\n"
-    buf = buf + "a1_0 + a1_1 + a1_2 + a1_3 + a1_4 + a1_5 + a1_6 + a1_7 = 1\n"
-    buf = buf + "a2_0 + a2_1 + a2_2 + a2_3 + a2_4 + a2_5 + a2_6 + a2_7 = 2\n"
-    buf = buf + "a3_0 + a3_1 + a3_2 + a3_3 + a3_4 + a3_5 + a3_6 + a3_7 = 4\n"
-    buf = buf + "a4_0 + a4_1 + a4_2 + a4_3 + a4_4 + a4_5 + a4_6 + a4_7 = 3\n"
-    buf = buf + "a5_0 + a5_1 + a5_2 + a5_3 + a5_4 + a5_5 + a5_6 + a5_7 = 1\n"
-    buf = buf + "a6_0 + a6_1 + a6_2 + a6_3 + a6_4 + a6_5 + a6_6 + a6_7 = 1\n"
     opOuter.write(buf)
 
     buf = ''
