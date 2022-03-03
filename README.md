@@ -2,12 +2,12 @@
 MILP Based Differential Characteristics Search for Lightweight Block Cipher PIPO-64/128 (https://link.springer.com/chapter/10.1007%2F978-3-030-68890-5_6) \
 **_Linear inequalities required for MILP problem are generated using MILES (https://github.com/tarunyadav/MILES)._**
 ## Source Code 
-### There are three python files in this source code.
+### There are five files and two folders in this source code.
 * _MILP_Outer.py_
 * _MILP_Inner.py_
 * _print_diff_characteristic.py_
 * _LinearInequalities_Outer.txt_ (Generated from MILES)
-* _LinearInequalities_Inner.txt_ (Generated from MILES)
+* _LinearInequalities_Inner.txt_ (Generated from MILES)\
 **_Source Code (including README) to search impossible differential and related-key differential characteristics is provided in respective folders._** 
 ## MILP model to minimize number of active S-boxes
 * _MILP_Outer.py_ is used to minimize number of active S-boxes in PIPO. It uses _LinearInequalities_Outer.txt_ to write linear inequalities of the S-box.
