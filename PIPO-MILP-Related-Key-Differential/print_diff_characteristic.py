@@ -26,7 +26,7 @@ def print_binary_data(data,prob):
         print(hex(int(data[i:i+16],2))[2:].zfill(4),end='')
 	
     print(" :: Probability => 2^{-"+str(prob)+"}")
-    print("");
+    #print("");
 
 def strtoint(s):
     reg = 0
@@ -63,7 +63,7 @@ no_of_rounds = max([_[0] for _ in round_bit_arr])
 key_diff_bits = list("0"*keysize);
 for bit in key_bit_arr:
         key_diff_bits[len(key_diff_bits)-1-bit] = "1";
-print("Related Key Differential Probability for " + str(no_of_rounds) + " rounds of PIPO_"+str(blocksize)+" is 2^{-" + str(diff_prob) + "}")
+print("Related-key Differential Probability for " + str(no_of_rounds) + " rounds of PIPO-"+str(blocksize)+"/128 is 2^{-" + str(diff_prob) + "}")
 #print(("Difference in Keybits is: " + "".join(key_diff_bits)),end='');
 key_data = "".join(key_diff_bits)
 print("Difference in Keybits is: ",end='');

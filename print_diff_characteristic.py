@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 27 18:40:37 2020
-
-@author: tarunyadav
-"""
-
 import sys
 filename = sys.argv[1]
 blocksize= 64;
@@ -32,7 +24,7 @@ def print_binary_data(data,prob):
     for i in range(0,len(data),16):
         print(hex(int(data[i:i+16],2))[2:].zfill(4),end='')
     print(" :: Probability => 2^{-"+str(prob)+"}")
-    print("");
+    #print("");
 
 def strtoint(s):
     reg = 0
@@ -65,11 +57,13 @@ for var in diff_differential_line_arr:
 no_of_rounds = max([_[0] for _ in round_bit_arr])
 
 
-print("Differential Probability for " + str(no_of_rounds) + " rounds of PIPO_"+str(blocksize)+" is 2^{-" + str(diff_prob) + "}")
+print("Differential Probability for " + str(no_of_rounds) + " rounds of PIPO-"+str(blocksize)+"/128 is 2^{-" + str(diff_prob) + "}")
 for r in range(0,no_of_rounds+1):
-    print("The input difference of the round "+ str(r)+" is: ");
+    if (r==0):
+        print("The input difference of plaintext is: ");
+    else:
+        print("The Output difference of the round "+ str(r)+" is: ");
     diff_bits = list("0"*blocksize);
-
     active_bits = [a[1] for a in round_bit_arr if a[0]==r]
     for bit in active_bits:
         diff_bits[len(diff_bits)-1-bit] = "1";

@@ -245,8 +245,8 @@ while True:
     o.optimize()
     iter_count_1 = iter_count_1 + 1
     if(o.getAttr("SolCount")!=0):
-            print("No. of Solultions: " + str(o.getAttr("SolCount"))+"\n")
-            print ("Iteratino No. - " + str(iter_count_0) + "_"+ str(iter_count_1) + "\n")
+            print("No. of Solutions: " + str(o.getAttr("SolCount"))+"\n")
+            print ("Iteration No. - " + str(iter_count_0) + "_"+ str(iter_count_1) + "\n")
 
             fix_diff[1] = fix_diff[1] << 1
             if (iter_count_1==64):
