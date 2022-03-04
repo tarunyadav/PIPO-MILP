@@ -8,6 +8,8 @@ MILP Based Related-key Differential Characteristics Search for Lightweight Block
 * _print_diff_characteristic.py_
 * _LinearInequalities_Outer.txt_ (Generated from MILES)
 * _LinearInequalities_Inner.txt_ (Generated from MILES)
+* _pipo_related_key_plaintext_search.c_
+* _pipo_orig_arguments.c_
 
 ## MILP model to minimize number of active S-boxes
 * _MILP_Outer.py_ is used to minimize number of active S-boxes in PIPO. It uses _LinearInequalities_Outer.txt_ to write linear inequalities of the S-box.
@@ -75,3 +77,99 @@ The Output difference of the round 14 is:
 0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
 ```
 **It is clear that probability of related-key differential characteristic for 13 rounds of PIPO-64/128 is 2<sup>-24</sup> (removing 14<sup>th</sup> round).**
+
+* Similary a 13-round related-key differential characteristic with zero input and output differences can be searched by fixing input and output differences in _MILP_Inner.py_.
+```
+Related-key Differential Probability for 13 rounds of PIPO-64/128 is 2^{-28.0}
+Difference in Keybits is: 0000  0000  0100  0000  0000  0000  0000  1000  0000  0001  0000  0000  0001  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000
+Difference in Keybits is (Hex):0x00400008010010000020000020000000
+The input difference of plaintext is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-0}
+The Output difference of the round 1 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 2 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 3 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 4 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 5 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 6 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 7 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 8 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 9 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 10 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 11 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+The Output difference of the round 12 is:
+0000  0000  0010  0000  0000  0000  0000  0000  0010  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0020  0000  2000  0000   :: 0x0020000020000000 :: Probability => 2^{-0}
+The Output difference of the round 13 is:
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  :: Hex => 0000  0000  0000  0000   :: 0x0000000000000000 :: Probability => 2^{-4}
+```
+## Searching plaintext which results in same ciphertext under different keys
+
+* _pipo_related_key_plaintext_search.c_ is used to search plaintext which results in same ciphertext under different keys. These keys will have the difference (``` 0x00400008010010000020000020000000 ```) provided in above mentioned characteristic. The probability of finding such plaintext is 2<sup>-28</sup> (based on searched characteristic). Therefore, we need to try atleast 2<sup>28</sup> plaintexts (_pipo_related_key_plaintext_search.c_ takes care of that). _pipo_related_key_plaintext_search.c_ takes 4 arugments which are 32-bit splitted parts of the key. The plaintext and ciphertext pairs with zero difference under different keys are search using following command:
+
+```
+gcc pipo_related_key_plaintext_search.c -o  prkps
+./prkps 6DC416DD 779428D2 7E1D20AD 2E152297
+```
+* The output is in the following format: 
+
+```
+Iteration No. is: 0
+Iteration No. is: 10000000
+Iteration No. is: 20000000
+
+Set:1 - Plaintext is: 7F7E2BBA 73EBFFFC, Ciphertext is: E1A627DE 2C38F685, Key is: 6DC416DD 779428D2 7E1D20AD 2E152297
+Set:2 - Plaintext is: 7F7E2BBA 73EBFFFC, Ciphertext is: E1A627DE 2C38F685, Key is: 6D8416D5 769438D2 7E3D20AD 0E152297
+Iteration No. is: 30000000
+Iteration No. is: 40000000
+Iteration No. is: 50000000
+Iteration No. is: 60000000
+Iteration No. is: 70000000
+Iteration No. is: 80000000
+
+Set:1 - Plaintext is: 2FF3B8A1 EF7D21FB, Ciphertext is: BCBF156B 98795149, Key is: 6DC416DD 779428D2 7E1D20AD 2E152297
+Set:2 - Plaintext is: 2FF3B8A1 EF7D21FB, Ciphertext is: BCBF156B 98795149, Key is: 6D8416D5 769438D2 7E3D20AD 0E152297
+Iteration No. is: 90000000
+
+Set:1 - Plaintext is: B6EBE876 A1AD60F9, Ciphertext is: EE5A4C85 03CFE510, Key is: 6DC416DD 779428D2 7E1D20AD 2E152297
+Set:2 - Plaintext is: B6EBE876 A1AD60F9, Ciphertext is: EE5A4C85 03CFE510, Key is: 6D8416D5 769438D2 7E3D20AD 0E152297
+Iteration No. is: 100000000
+Iteration No. is: 110000000
+Iteration No. is: 120000000
+Iteration No. is: 130000000
+Iteration No. is: 140000000
+Iteration No. is: 150000000
+Iteration No. is: 160000000
+Iteration No. is: 170000000
+
+Set:1 - Plaintext is: 7DFD72B5 BD7DE671, Ciphertext is: EB5D2D12 90C98CBE, Key is: 6DC416DD 779428D2 7E1D20AD 2E152297
+Set:2 - Plaintext is: 7DFD72B5 BD7DE671, Ciphertext is: EB5D2D12 90C98CBE, Key is: 6D8416D5 769438D2 7E3D20AD 0E152297
+Iteration No. is: 180000000
+Iteration No. is: 190000000
+Iteration No. is: 200000000
+Iteration No. is: 210000000
+Iteration No. is: 220000000
+Iteration No. is: 230000000
+Iteration No. is: 240000000
+Iteration No. is: 250000000
+Iteration No. is: 260000000
+
+```
+
+* Set:1 and Set:2 gives plaintext, ciphertext and key combinations. It is clear from the output that same ciphertext is produced for same plaintext but under different keys.
+* The results can be verfied using original program provided by the designder of PIPO-64/128. We have made minor changes in the original program to work in argument format. _pipo_orig_arguments.c_ takes 6 argument. First 2 arguments are 32-bit splitted parts of the plaintext and next 4 arguments are 32-bit splitted parts of the key. Results can be verified using following command:
+```
+gcc pipo_orig_arguments.c -o poa
+./poa 7F7E2BBA 73EBFFFC 6DC416DD 779428D2 7E1D20AD 2E152297
+./poa 7F7E2BBA 73EBFFFC 6D8416D5 769438D2 7E3D20AD 0E152297
+```
+* Both the executions will result in the same ciphertext after 13 rounds of PIPO-64/128. 
