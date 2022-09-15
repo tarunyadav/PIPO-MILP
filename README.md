@@ -8,7 +8,7 @@ MILP Based Differential Characteristics Search for Lightweight Block Cipher PIPO
 * _print_diff_characteristic.py_
 * _LinearInequalities_Outer.txt_ (Generated from MILES)
 * _LinearInequalities_Inner.txt_ (Generated from MILES)\
-**_Source Code (including README) to search impossible differential and related-key differential characteristics is provided in respective folders._** 
+**_Source Code (including README) for inequalities reduction and to search impossible differential & related-key differential characteristics is provided in respective folders._** 
 ## MILP model to minimize number of active S-boxes
 * _MILP_Outer.py_ is used to minimize number of active S-boxes in PIPO. It uses _LinearInequalities_Outer.txt_ to write linear inequalities of the S-box.
 * There are two arugment for _MILP_Outer.py_. First argument defines number of rounds and second argument define the cutoff bound of active S-box. The second argument is made changable(instead of fix upper/lower bound) because it is obsevered that GUROBI gives quick solution for for some values which are not directly related to the upper/lower bound of active S-box. 
